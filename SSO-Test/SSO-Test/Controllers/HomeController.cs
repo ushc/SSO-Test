@@ -19,15 +19,18 @@ namespace SSO_Test.Controllers
         public ActionResult Index()
         {
             var ticks = DateTime.UtcNow.Ticks;   // current UTC date and time, in ticks
-            var key = "Aif6hnAJJ13";                // your client key
-            var secret = "LJouuht654A";          // your client secret
-            var ssn = "111223333";               // uniquely identifies a user
+            var key = "uouUIHui235A";                // your client key
+            var secret = "NO564NJusf";          // your client secret
+            var ssn = "333221111";               // uniquely identifies a user
             var endpoint = "ushealthcenter.com/USHCSSO/SSOLoginUser";
             var sig = getSignature(ticks, secret, endpoint, ssn);
-            var fullURL = "http://" + endpoint + "?Signature=" + sig + "&ClientKey="
-                            + key + "&Timestamp=" + ticks + "&Identifier=" + ssn;
+            //var fullURL = "http://" + endpoint + "?Signature=" + sig + "&ClientKey="
+            //                + key + "&Timestamp=" + ticks + "&Identifier=" + ssn;
 
-            return Redirect(fullURL);
+            //            return Redirect(fullURL);
+            return Redirect("https://" + endpoint + "?Signature=" + sig + "&ClientKey="
+                            + key + "&Timestamp=" + ticks + "&Identifier=" + ssn);
+
         }
 
         public static string hashPair(string key, string body)
